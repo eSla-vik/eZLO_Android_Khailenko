@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
@@ -35,12 +36,18 @@ class DetailDeviceFragment : Fragment() {
     }
 
     private fun initScreenMode(isEditMode: Boolean) {
-        binding.acetDetailScreenDeviceName.isEnabled = isEditMode
-        if (isEditMode) {
-            val inputMethodManager: InputMethodManager =
-                requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-            binding.acetDetailScreenDeviceName.requestFocus()
-            inputMethodManager.showSoftInput(view, 0)
+        with(binding) {
+            acetDetailScreenDeviceName.isEnabled = isEditMode
+            acbSaveNewTitle.isVisible = isEditMode
+            if (isEditMode) {
+                acetDetailScreenDeviceName.requestFocus()
+                val inputMethodManager =
+                    requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+                inputMethodManager.showSoftInput(
+                    acetDetailScreenDeviceName,
+                    InputMethodManager.SHOW_IMPLICIT
+                )
+            }
         }
     }
     private fun initDeviceData(device: Device) {
