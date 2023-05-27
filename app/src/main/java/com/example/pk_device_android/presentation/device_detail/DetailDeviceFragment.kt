@@ -9,8 +9,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
-import com.example.pk_device_android.R
-import com.example.pk_device_android.data.models.Device
+import com.example.pk_device_android.presentation.mappers.Device
 import com.example.pk_device_android.databinding.DetailDeviceFragmentBinding
 
 

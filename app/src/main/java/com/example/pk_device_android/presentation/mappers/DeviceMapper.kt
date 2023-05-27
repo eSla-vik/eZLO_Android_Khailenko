@@ -1,9 +1,6 @@
 package com.example.pk_device_android.presentation.mappers
 
-import android.content.Context
-import android.util.Log
 import com.example.pk_device_android.R
-import com.example.pk_device_android.data.models.Device
 import com.example.pk_device_android.data.models.DevicesListResponse
 import com.example.pk_device_android.presentation.StringResourceProvider
 

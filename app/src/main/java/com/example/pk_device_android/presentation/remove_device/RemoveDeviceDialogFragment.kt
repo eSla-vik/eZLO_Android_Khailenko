@@ -2,12 +2,15 @@ package com.example.pk_device_android.presentation.remove_device
 
 import android.app.Dialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.navArgs
-import com.example.pk_device_android.data.models.Device
+import com.example.pk_device_android.presentation.mappers.Device
 import com.example.pk_device_android.databinding.RemoveDeviceDialogBinding
 
 
@@ -15,7 +18,6 @@ class RemoveDeviceDialogFragment : DialogFragment() {
 
     private var _binding: RemoveDeviceDialogBinding? = null
     private val binding get() = _binding!!
-    private lateinit var onDeleteDeviceCallback: ((Device) -> Unit)
     private val args: RemoveDeviceDialogFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -38,7 +40,10 @@ class RemoveDeviceDialogFragment : DialogFragment() {
         super.onStart()
         binding.apply {
             tvRemoveDevice.setOnClickListener {
-                onDeleteDeviceCallback(args.deleteDetailDevice)
+                setFragmentResult(
+                    REQUEST_KEY_REMOVE_DEVICE_ID,
+                    bundleOf(BUNDLE_KEY_REMOVE_DEVICE_ID to args.devicePosition)
+                )
                 dismissAllowingStateLoss()
             }
             tvCancelRemoveDeviceDialog.setOnClickListener { dismissAllowingStateLoss() }
@@ -48,6 +53,11 @@ class RemoveDeviceDialogFragment : DialogFragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        private const val REQUEST_KEY_REMOVE_DEVICE_ID = "REQUEST_KEY_REMOVE_DEVICE_ID"
+        private const val BUNDLE_KEY_REMOVE_DEVICE_ID = "BUNDLE_KEY_REMOVE_DEVICE_ID"
     }
 
 }

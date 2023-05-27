@@ -19,15 +19,15 @@
                 app:argType="boolean" />
             <argument
                 android:name="detailDeviceData"
-                app:argType="com.example.pk_device_android.data.models.Device" />
+                app:argType="com.example.pk_device_android.presentation.mappers.Device" />
         </action>
 
         <action
             android:id="@+id/devices_list_fragment_to_delete_device_dialog"
             app:destination="@+id/delete_device_dialog">
             <argument
-                android:name="deleteDetailDevice"
-                app:argType="com.example.pk_device_android.data.models.Device"/>
+                android:name="devicePosition"
+                app:argType="integer"/>
         </action>
 
     </fragment>
@@ -43,7 +43,7 @@
             app:argType="boolean" />
         <argument
             android:name="detailDeviceData"
-            app:argType="com.example.pk_device_android.data.models.Device" />
+            app:argType="com.example.pk_device_android.presentation.mappers.Device" />
     </fragment>
 
     <dialog
@@ -52,8 +52,8 @@
         android:label="@string/delete_device_dialog_label"
         tools:layout="@layout/remove_device_dialog">
         <argument
-            android:name="deleteDetailDevice"
-            app:argType="com.example.pk_device_android.data.models.Device"/>
+            android:name="devicePosition"
+            app:argType="integer"/>
     </dialog>
 
 </navigation>

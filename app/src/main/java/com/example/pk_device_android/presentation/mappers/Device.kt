@@ -1,4 +1,4 @@
-package com.example.pk_device_android.data.models
+package com.example.pk_device_android.presentation.mappers
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

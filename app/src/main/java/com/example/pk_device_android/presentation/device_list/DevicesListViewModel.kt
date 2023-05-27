@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.pk_device_android.data.models.Device
+import com.example.pk_device_android.presentation.mappers.Device
 import com.example.pk_device_android.domain.interactors.DeviceInteractor
 import com.example.pk_device_android.presentation.mappers.DeviceMapper
 import kotlinx.coroutines.launch
@@ -27,6 +27,10 @@ class DevicesListViewModel(
             val mapperListOfDevice = deviceMapper.map(listOfDevice)
             _deviceLiveData.value = mapperListOfDevice
         }
+    }
+
+    fun updateDeviceList(newDeviceList: List<Device>) {
+        _deviceLiveData.value = newDeviceList
     }
 
 }
