@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.example.pk_device_android.R
 import com.example.pk_device_android.data.models.Device
 import com.example.pk_device_android.databinding.DetailDeviceFragmentBinding
@@ -45,11 +46,12 @@ class DetailDeviceFragment : Fragment() {
     }
     private fun initDeviceData(device: Device) {
         with(binding) {
-            acetDetailScreenDeviceName.setText(getString(R.string.remove_device))
-            acivDetailScreenDeviceSn.text = device.pkDevice.toString()
+            acetDetailScreenDeviceName.setText(device.templateTitle)
+            acivDetailScreenDeviceSn.text = device.pkDevice
             acivDetailScreenDeviceMacAddress.text = device.macAddress
             acivDetailScreenDeviceFirmware.text = device.firmware
             acivDetailScreenDeviceModel.text = device.firmware
+            Glide.with(requireActivity()).load(device.imageSource).into(acivDetailScreenDeviceImage)
         }
     }
 

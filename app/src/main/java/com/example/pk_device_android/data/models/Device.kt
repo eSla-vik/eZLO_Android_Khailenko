@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Device(
     val templateTitle: String,
-    val pkDevice: Int,
+    val pkDevice: String,
     val macAddress: String,
     val imageSource: Int,
     val firmware: String,

@@ -3,6 +3,7 @@ package com.example.pk_device_android.presentation.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.pk_device_android.data.models.Device
 import com.example.pk_device_android.databinding.DeviceItemBinding
 
@@ -29,16 +30,12 @@ class DevicesAdapter(
 
         fun bind(item: Device) {
             with(deviceItemBinding) {
-                acivTvDeviceItemTitle.text = item.pkDevice.toString()
-                acibDeviceItemDetailBtn.setOnClickListener {
-                    detailDeviceClickCallback(
-                        item,
-                        false
-                    )
-                }
+                Glide.with(itemView).load(item.imageSource).into(acivDeviceItemImage)
+                acivTvDeviceItemTitle.text = item.templateTitle
+                acivTvDeviceItemPk.text = item.pkDevice.toString()
+                acibDeviceItemDetailBtn.setOnClickListener { detailDeviceClickCallback(item, false) }
                 acibDeviceItemEditBtn.setOnClickListener { detailDeviceClickCallback(item, true) }
-                clMainContainerDeviceItem.setOnLongClickListener {
-                    detailDeviceLongClickCallback(item)
+                clMainContainerDeviceItem.setOnLongClickListener { detailDeviceLongClickCallback(item)
                     true
                 }
             }
