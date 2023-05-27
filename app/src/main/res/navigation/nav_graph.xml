@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/devices_list_fragment"
+    android:id="@+id/nav_graph">
+
+    <fragment
+        android:id="@+id/devices_list_fragment"
+        android:name="com.example.pk_device_android.presentation.device_list.DevicesListFragment"
+        android:label="@string/devices_list_fragment_label"
+        tools:layout="@layout/devices_list_fragment"/>
+
+</navigation>

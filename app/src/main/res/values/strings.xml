@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">PK_Device_Android</string>
+
+    <!-- User data -->
+    <string name="user_name">John Wayne</string>
+    <!--  -->
+
+    <!-- Device data template-->
+    <string name="device_item_name">Home Number 1</string>
+    <string name="device_item_sn">45013855</string>
+    <!--  -->
+
+    <!-- Navigation component-->
+    <string name="devices_list_fragment_label">DevicesListFragment</string>
+    <!--  -->
+</resources>
