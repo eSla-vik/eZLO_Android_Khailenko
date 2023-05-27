@@ -1,5 +1,6 @@
 package com.example.pk_device_android.presentation.device_list
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -32,6 +33,20 @@ class DevicesListViewModel(
     fun removeDevice(device: Device) {
         val list = _deviceLiveData.value.orEmpty().toMutableList()
         list.remove(device)
+        _deviceLiveData.value = list
+    }
+
+    fun updateDevice(newDevice: Device) {
+        val list = _deviceLiveData.value.orEmpty().toMutableList()
+        list.forEachIndexed { index, device ->
+            val deviceToUpdatedTitle = list.find { device.pkDevice == newDevice.pkDevice }
+            if (deviceToUpdatedTitle != null) {
+                val replaceDevice = device.copy(
+                    templateTitle = newDevice.templateTitle
+                )
+                list[index] = replaceDevice
+            }
+        }
         _deviceLiveData.value = list
     }
 

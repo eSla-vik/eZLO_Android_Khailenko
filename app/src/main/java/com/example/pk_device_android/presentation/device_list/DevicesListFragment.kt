@@ -79,6 +79,17 @@ class DevicesListFragment : Fragment() {
                 deviceListViewModel.removeDevice(device)
             }
         }
+
+        setFragmentResultListener(REQUEST_KEY_CHANGE_DEVICE_TITLE) { _, bundle ->
+            val device = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                bundle.getParcelable(BUNDLE_KEY_CHANGE_DEVICE_TITLE, Device::class.java)
+            } else {
+                bundle.getParcelable(BUNDLE_KEY_CHANGE_DEVICE_TITLE)
+            }
+            if (device != null) {
+                deviceListViewModel.updateDevice(device)
+            }
+        }
     }
 
     private fun initObservers() {
@@ -90,6 +101,8 @@ class DevicesListFragment : Fragment() {
     companion object {
         const val REQUEST_KEY_REMOVE_DEVICE = "REQUEST_KEY_REMOVE_DEVICE"
         const val BUNDLE_KEY_REMOVE_DEVICE = "BUNDLE_KEY_REMOVE_DEVICE"
+        const val REQUEST_KEY_CHANGE_DEVICE_TITLE = "REQUEST_KEY_CHANGE_DEVICE_TITLE"
+        const val BUNDLE_KEY_CHANGE_DEVICE_TITLE = "BUNDLE_KEY_CHANGE_DEVICE_TITLE"
     }
 
 }

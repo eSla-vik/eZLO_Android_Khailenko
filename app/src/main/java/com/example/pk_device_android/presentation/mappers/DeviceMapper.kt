@@ -45,10 +45,6 @@ class DeviceMapperImpl(
         return when (platform) {
             DevicePlatform.SERCOMM_G450.type -> R.drawable.vera_plus_big
             DevicePlatform.SERCOMM_G550.type -> R.drawable.vera_secure_big
-            DevicePlatform.MICASAVERDE_VERALITE.type -> R.drawable.vera_edge_big
-            DevicePlatform.SERCOMM_NA900.type -> R.drawable.vera_edge_big
-            DevicePlatform.SERCOMM_NA301.type -> R.drawable.vera_edge_big
-            DevicePlatform.SERCOMM_NA930.type -> R.drawable.vera_edge_big
             else -> R.drawable.vera_edge_big
         }
     }
