@@ -3,13 +3,13 @@ package com.example.pk_device_android.presentation.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pk_device_android.data.models.DevicesResponse
+import com.example.pk_device_android.data.models.Device
 import com.example.pk_device_android.databinding.DeviceItemBinding
 
 class DevicesAdapter(
-    private val detailDeviceClickCallback: ((DevicesResponse, Boolean) -> Unit),
-    private val detailDeviceLongClickCallback: ((DevicesResponse) -> Unit),
-    private val devicesList: List<DevicesResponse>
+    private val detailDeviceClickCallback: ((Device, Boolean) -> Unit),
+    private val detailDeviceLongClickCallback: ((Device) -> Unit),
+    private val devicesList: List<Device>
 ) : RecyclerView.Adapter<DevicesAdapter.DevicesViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DevicesViewHolder {
@@ -27,7 +27,7 @@ class DevicesAdapter(
     inner class DevicesViewHolder(private val deviceItemBinding: DeviceItemBinding) :
         RecyclerView.ViewHolder(deviceItemBinding.root) {
 
-        fun bind(item: DevicesResponse) {
+        fun bind(item: Device) {
             with(deviceItemBinding) {
                 acivTvDeviceItemTitle.text = item.pkDevice.toString()
                 acibDeviceItemDetailBtn.setOnClickListener {

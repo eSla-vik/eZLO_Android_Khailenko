@@ -1,21 +1,21 @@
 package com.example.pk_device_android.presentation.device_list
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.pk_device_android.data.models.DevicesListResponse
-import com.example.pk_device_android.data.models.DevicesResponse
+import com.example.pk_device_android.data.models.Device
 import com.example.pk_device_android.domain.interactors.DeviceInteractor
+import com.example.pk_device_android.presentation.mappers.DeviceMapper
 import kotlinx.coroutines.launch
 
 class DevicesListViewModel(
-    private val deviceInteractor: DeviceInteractor
+    private val deviceInteractor: DeviceInteractor,
+    private val deviceMapper: DeviceMapper
 ): ViewModel() {
 
-    private var _deviceLiveData = MutableLiveData<DevicesListResponse>()
-    val deviceLiveData: LiveData<DevicesListResponse> = _deviceLiveData
+    private var _deviceLiveData = MutableLiveData<List<Device>>()
+    val deviceLiveData: LiveData<List<Device>> = _deviceLiveData
 
     init {
         getDeviceList()
@@ -23,8 +23,9 @@ class DevicesListViewModel(
 
     fun getDeviceList() {
         viewModelScope.launch {
-            _deviceLiveData.value = deviceInteractor.getDeviceList()
-            Log.d("Khailenko", "test _deviceLiveData-> ${_deviceLiveData.value} ")
+            val listOfDevice = deviceInteractor.getDeviceList()
+            val mapperListOfDevice = deviceMapper.map(listOfDevice)
+            _deviceLiveData.value = mapperListOfDevice
         }
     }
 

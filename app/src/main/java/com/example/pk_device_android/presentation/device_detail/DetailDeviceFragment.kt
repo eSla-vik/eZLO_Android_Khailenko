@@ -2,16 +2,14 @@ package com.example.pk_device_android.presentation.device_detail
 
 import android.app.Activity
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.example.pk_device_android.R
-import com.example.pk_device_android.data.models.DevicesResponse
+import com.example.pk_device_android.data.models.Device
 import com.example.pk_device_android.databinding.DetailDeviceFragmentBinding
 
 
@@ -34,8 +32,6 @@ class DetailDeviceFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initScreenMode(args.isEditMode)
         initDeviceData(args.detailDeviceData)
-        Log.d("Khailenko", "args bool -> ${args.isEditMode}")
-        Log.d("Khailenko", "args data -> ${args.detailDeviceData}")
     }
 
     private fun initScreenMode(isEditMode: Boolean) {
@@ -47,13 +43,13 @@ class DetailDeviceFragment : Fragment() {
             inputMethodManager.showSoftInput(view, 0)
         }
     }
-    private fun initDeviceData(devicesResponse: DevicesResponse) {
+    private fun initDeviceData(device: Device) {
         with(binding) {
             acetDetailScreenDeviceName.setText(getString(R.string.remove_device))
-            acivDetailScreenDeviceSn.text = devicesResponse.pkDevice.toString()
-            acivDetailScreenDeviceMacAddress.text = devicesResponse.macAddress
-            acivDetailScreenDeviceFirmware.text = devicesResponse.firmware
-            acivDetailScreenDeviceModel.text = devicesResponse.firmware
+            acivDetailScreenDeviceSn.text = device.pkDevice.toString()
+            acivDetailScreenDeviceMacAddress.text = device.macAddress
+            acivDetailScreenDeviceFirmware.text = device.firmware
+            acivDetailScreenDeviceModel.text = device.firmware
         }
     }
 

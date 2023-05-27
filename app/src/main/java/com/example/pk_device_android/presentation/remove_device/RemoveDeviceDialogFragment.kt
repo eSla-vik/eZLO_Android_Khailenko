@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.navArgs
-import com.example.pk_device_android.data.models.DevicesResponse
+import com.example.pk_device_android.data.models.Device
 import com.example.pk_device_android.databinding.RemoveDeviceDialogBinding
 
 
@@ -15,7 +15,7 @@ class RemoveDeviceDialogFragment : DialogFragment() {
 
     private var _binding: RemoveDeviceDialogBinding? = null
     private val binding get() = _binding!!
-    private lateinit var onDeleteDeviceCallback: ((DevicesResponse) -> Unit)
+    private lateinit var onDeleteDeviceCallback: ((Device) -> Unit)
     private val args: RemoveDeviceDialogFragmentArgs by navArgs()
 
     override fun onCreateView(

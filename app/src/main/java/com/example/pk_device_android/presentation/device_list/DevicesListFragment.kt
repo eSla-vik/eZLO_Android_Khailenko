@@ -1,22 +1,18 @@
 package com.example.pk_device_android.presentation.device_list
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pk_device_android.R
-import com.example.pk_device_android.data.models.DevicesListResponse
-import com.example.pk_device_android.data.models.DevicesResponse
+import com.example.pk_device_android.data.models.Device
 import com.example.pk_device_android.databinding.DevicesListFragmentBinding
 import com.example.pk_device_android.presentation.adapters.DevicesAdapter
-import com.example.pk_device_android.presentation.remove_device.RemoveDeviceDialogFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DevicesListFragment : Fragment() {
@@ -45,7 +41,7 @@ class DevicesListFragment : Fragment() {
         }
     }
 
-    private fun initAdapter(devicesList: DevicesListResponse) {
+    private fun initAdapter(devicesList: List<Device>) {
         binding.rvDevicesList.adapter = DevicesAdapter(
             { deviceDetail, isEditMode ->
                 navigateToDetailDeviceScreen(deviceDetail, isEditMode)
@@ -53,7 +49,7 @@ class DevicesListFragment : Fragment() {
             { deviceDetail ->
                 showDialogFragment(deviceDetail)
             },
-            devicesList.devices
+            devicesList
         )
         addDividerToAdapter()
     }
@@ -65,7 +61,7 @@ class DevicesListFragment : Fragment() {
         binding.rvDevicesList.addItemDecoration(decorator)
     }
 
-    private fun navigateToDetailDeviceScreen(detailDevice: DevicesResponse, isEditMode: Boolean) {
+    private fun navigateToDetailDeviceScreen(detailDevice: Device, isEditMode: Boolean) {
         val action = DevicesListFragmentDirections.devicesListFragmentToDetailDeviceFragment(
             detailDevice,
             isEditMode
@@ -73,7 +69,7 @@ class DevicesListFragment : Fragment() {
         findNavController().navigate(action)
     }
 
-    private fun showDialogFragment(detailDevice: DevicesResponse) {
+    private fun showDialogFragment(detailDevice: Device) {
         val action = DevicesListFragmentDirections.devicesListFragmentToDeleteDeviceDialog(detailDevice)
         findNavController().navigate(action)
     }

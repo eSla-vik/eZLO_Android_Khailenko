@@ -6,5 +6,5 @@ enum class DevicePlatform(val type: String) {
     MICASAVERDE_VERALITE("MiCasaVerde VeraLite"),
     SERCOMM_NA900("Sercomm NA900"),
     SERCOMM_NA301("Sercomm NA301"),
-    SERCOMM_NA930("Sercomm NA930")
+    SERCOMM_NA930("Sercomm NA930"),
 }
