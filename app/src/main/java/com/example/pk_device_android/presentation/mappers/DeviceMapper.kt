@@ -5,32 +5,37 @@ import android.util.Log
 import com.example.pk_device_android.R
 import com.example.pk_device_android.data.models.Device
 import com.example.pk_device_android.data.models.DevicesListResponse
+import com.example.pk_device_android.presentation.StringResourceProvider
 
-class DeviceMapper(
-    private val context: Context
-) : Mapper<DevicesListResponse, Device> {
+interface DeviceMapper {
+    fun map(input: DevicesListResponse): List<Device>
+}
+
+class DeviceMapperImpl(
+    private val stringResourceProvider: StringResourceProvider
+) : DeviceMapper {
     override fun map(input: DevicesListResponse): List<Device> {
         val mapperDeviceList = input.devices.map {
             Device(
-                templateTitle = context.getString(
+                templateTitle = stringResourceProvider.getString(
                     R.string.device_detail_template,
-                    context.getString(R.string.device_home_number_template),
+                    stringResourceProvider.getString(R.string.device_home_number_template),
                     (input.devices.indexOf(it) + 1).toString()
                 ),
-                pkDevice = context.getString(
+                pkDevice = stringResourceProvider.getString(
                     R.string.device_detail_template,
-                    context.getString(R.string.device_sn_template),
+                    stringResourceProvider.getString(R.string.device_sn_template),
                     (it.pkDevice).toString()
                 ),
-                macAddress = context.getString(
+                macAddress = stringResourceProvider.getString(
                     R.string.device_detail_template,
-                    context.getString(R.string.device_mac_address_template),
+                    stringResourceProvider.getString(R.string.device_mac_address_template),
                     (it.macAddress)
                 ),
                 imageSource = checkDevicePlatform(it.platform),
-                firmware = context.getString(
+                firmware = stringResourceProvider.getString(
                     R.string.device_detail_template,
-                    context.getString(R.string.device_firmwave_template),
+                    stringResourceProvider.getString(R.string.device_firmwave_template),
                     (it.firmware)
                 ),
                 platform = it.platform

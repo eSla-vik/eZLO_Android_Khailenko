@@ -38,10 +38,10 @@ class DetailDeviceFragment : Fragment() {
     private fun initScreenMode(isEditMode: Boolean) {
         binding.acetDetailScreenDeviceName.isEnabled = isEditMode
         if (isEditMode) {
-//            val inputMethodManager: InputMethodManager =
-//                requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-//            binding.acetDetailScreenDeviceName.requestFocus()
-//            inputMethodManager.showSoftInput(view, 0)
+            val inputMethodManager: InputMethodManager =
+                requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+            binding.acetDetailScreenDeviceName.requestFocus()
+            inputMethodManager.showSoftInput(view, 0)
         }
     }
     private fun initDeviceData(device: Device) {
