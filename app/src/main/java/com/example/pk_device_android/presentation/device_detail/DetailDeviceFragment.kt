@@ -18,7 +18,7 @@ class DetailDeviceFragment : Fragment() {
 
     private var _binding: DetailDeviceFragmentBinding? = null
     private val binding get() = _binding!!
-    val args: DetailDeviceFragmentArgs by navArgs()
+    private val args: DetailDeviceFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,

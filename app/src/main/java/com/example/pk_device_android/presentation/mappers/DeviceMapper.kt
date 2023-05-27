@@ -1,23 +1,23 @@
 package com.example.pk_device_android.presentation.mappers
 
 import com.example.pk_device_android.R
-import com.example.pk_device_android.data.models.DevicesListResponse
+import com.example.pk_device_android.domain.interfaces.DeviceItem
 import com.example.pk_device_android.presentation.StringResourceProvider
 
 interface DeviceMapper {
-    fun map(input: DevicesListResponse): List<Device>
+    fun map(deviceItemList: List<DeviceItem>): List<Device>
 }
 
 class DeviceMapperImpl(
     private val stringResourceProvider: StringResourceProvider
 ) : DeviceMapper {
-    override fun map(input: DevicesListResponse): List<Device> {
-        val mapperDeviceList = input.devices.map {
+    override fun map(deviceItemList: List<DeviceItem>): List<Device> {
+        val mapperDeviceList = deviceItemList.map {
             Device(
                 templateTitle = stringResourceProvider.getString(
                     R.string.device_detail_template,
                     stringResourceProvider.getString(R.string.device_home_number_template),
-                    (input.devices.indexOf(it) + 1).toString()
+                    (deviceItemList.indexOf(it) + 1).toString()
                 ),
                 pkDevice = stringResourceProvider.getString(
                     R.string.device_detail_template,

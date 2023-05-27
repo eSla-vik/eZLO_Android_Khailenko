@@ -26,8 +26,8 @@
             android:id="@+id/devices_list_fragment_to_delete_device_dialog"
             app:destination="@+id/delete_device_dialog">
             <argument
-                android:name="devicePosition"
-                app:argType="integer"/>
+                android:name="device"
+                app:argType="com.example.pk_device_android.presentation.mappers.Device"/>
         </action>
 
     </fragment>
@@ -52,8 +52,8 @@
         android:label="@string/delete_device_dialog_label"
         tools:layout="@layout/remove_device_dialog">
         <argument
-            android:name="devicePosition"
-            app:argType="integer"/>
+            android:name="device"
+            app:argType="com.example.pk_device_android.presentation.mappers.Device"/>
     </dialog>
 
 </navigation>

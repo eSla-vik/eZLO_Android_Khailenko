@@ -1,10 +1,7 @@
 package com.example.pk_device_android.data.models
 
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
 
-@Parcelize
 data class DevicesResponse(
     @SerializedName("PK_Device")
     val pkDevice: Int,
@@ -28,4 +25,4 @@ data class DevicesResponse(
     val lastAliveReported: String,
     @SerializedName("Platform")
     val platform: String
-) : Parcelable
+)

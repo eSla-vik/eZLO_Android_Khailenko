@@ -1,7 +1,7 @@
 package com.example.pk_device_android.presentation.device_list
 
+import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +22,14 @@ class DevicesListFragment : Fragment() {
     private var _binding: DevicesListFragmentBinding? = null
     private val binding get() = _binding!!
     private val deviceListViewModel by viewModel<DevicesListViewModel>()
-    private var adapter: DevicesAdapter? = null
+    private var adapter = DevicesAdapter(
+        { deviceDetail, isEditMode ->
+            navigateToDetailDeviceScreen(deviceDetail, isEditMode)
+        },
+        { device ->
+            showDialogFragment(device)
+        },
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,27 +44,15 @@ class DevicesListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initObservers()
         initResultListener()
+        initAdapter()
     }
 
-    private fun initAdapter(devicesList: List<Device>) {
-        adapter = DevicesAdapter(
-            { deviceDetail, isEditMode ->
-                navigateToDetailDeviceScreen(deviceDetail, isEditMode)
-            },
-            { position ->
-                showDialogFragment(position)
-            },
-            devicesList.toMutableList()
-        )
-        addDividerToAdapter()
-        binding.rvDevicesList.adapter = adapter
-    }
-
-    private fun addDividerToAdapter() {
+    private fun initAdapter() {
         val decorator = DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL)
         ContextCompat.getDrawable(requireContext(), R.drawable.item_divider)
             ?.let { decorator.setDrawable(it) }
         binding.rvDevicesList.addItemDecoration(decorator)
+        binding.rvDevicesList.adapter = adapter
     }
 
     private fun navigateToDetailDeviceScreen(detailDevice: Device, isEditMode: Boolean) {
@@ -68,28 +63,33 @@ class DevicesListFragment : Fragment() {
         findNavController().navigate(action)
     }
 
-    private fun showDialogFragment(position: Int) {
-        val action = DevicesListFragmentDirections.devicesListFragmentToDeleteDeviceDialog(position)
+    private fun showDialogFragment(device: Device) {
+        val action = DevicesListFragmentDirections.devicesListFragmentToDeleteDeviceDialog(device)
         findNavController().navigate(action)
     }
 
     private fun initResultListener() {
-        setFragmentResultListener(REQUEST_KEY_REMOVE_DEVICE_ID) { _, bundle ->
-            val result = bundle.getInt(BUNDLE_KEY_REMOVE_DEVICE_ID)
-            adapter?.deleteDevice(result)
-            adapter?.let { deviceListViewModel.updateDeviceList(it.currentDeviceList) }
+        setFragmentResultListener(REQUEST_KEY_REMOVE_DEVICE) { _, bundle ->
+            val device = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                bundle.getParcelable(BUNDLE_KEY_REMOVE_DEVICE, Device::class.java)
+            } else {
+                bundle.getParcelable(BUNDLE_KEY_REMOVE_DEVICE)
+            }
+            if (device != null) {
+                deviceListViewModel.removeDevice(device)
+            }
         }
     }
 
     private fun initObservers() {
         deviceListViewModel.deviceLiveData.observe(viewLifecycleOwner) {
-            initAdapter(it)
+            adapter.submitList(it)
         }
     }
 
     companion object {
-        private const val REQUEST_KEY_REMOVE_DEVICE_ID = "REQUEST_KEY_REMOVE_DEVICE_ID"
-        private const val BUNDLE_KEY_REMOVE_DEVICE_ID = "BUNDLE_KEY_REMOVE_DEVICE_ID"
+        const val REQUEST_KEY_REMOVE_DEVICE = "REQUEST_KEY_REMOVE_DEVICE"
+        const val BUNDLE_KEY_REMOVE_DEVICE = "BUNDLE_KEY_REMOVE_DEVICE"
     }
 
 }

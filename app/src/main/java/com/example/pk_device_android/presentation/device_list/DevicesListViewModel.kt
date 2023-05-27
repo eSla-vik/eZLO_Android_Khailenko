@@ -29,8 +29,10 @@ class DevicesListViewModel(
         }
     }
 
-    fun updateDeviceList(newDeviceList: List<Device>) {
-        _deviceLiveData.value = newDeviceList
+    fun removeDevice(device: Device) {
+        val list = _deviceLiveData.value.orEmpty().toMutableList()
+        list.remove(device)
+        _deviceLiveData.value = list
     }
 
 }
