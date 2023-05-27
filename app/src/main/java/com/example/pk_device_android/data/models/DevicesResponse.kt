@@ -27,5 +27,5 @@ data class DevicesResponse(
     @SerializedName("LastAliveReported")
     val lastAliveReported: String,
     @SerializedName("Platform")
-    val platform: String,
+    val platform: String
 ) : Parcelable

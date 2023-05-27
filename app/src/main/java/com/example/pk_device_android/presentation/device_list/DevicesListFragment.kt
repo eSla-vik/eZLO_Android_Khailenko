@@ -16,6 +16,7 @@ import com.example.pk_device_android.data.models.DevicesListResponse
 import com.example.pk_device_android.data.models.DevicesResponse
 import com.example.pk_device_android.databinding.DevicesListFragmentBinding
 import com.example.pk_device_android.presentation.adapters.DevicesAdapter
+import com.example.pk_device_android.presentation.remove_device.RemoveDeviceDialogFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DevicesListFragment : Fragment() {
@@ -73,7 +74,8 @@ class DevicesListFragment : Fragment() {
     }
 
     private fun showDialogFragment(detailDevice: DevicesResponse) {
-        Log.d("Khailenko", "detailDevice -> ${detailDevice}")
+        val action = DevicesListFragmentDirections.devicesListFragmentToDeleteDeviceDialog(detailDevice)
+        findNavController().navigate(action)
     }
 
 }

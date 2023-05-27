@@ -13,6 +13,7 @@
     <!-- Navigation component-->
     <string name="devices_list_fragment_label">DevicesListFragment</string>
     <string name="detail_device_fragment_label">DetailDeviceFragment</string>
+    <string name="delete_device_dialog_label">DeleteDeviceFragment</string>
     <!--  -->
 
     <!-- Remove device dialog-->

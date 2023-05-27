@@ -22,6 +22,14 @@
                 app:argType="com.example.pk_device_android.data.models.DevicesResponse" />
         </action>
 
+        <action
+            android:id="@+id/devices_list_fragment_to_delete_device_dialog"
+            app:destination="@+id/delete_device_dialog">
+            <argument
+                android:name="deleteDetailDevice"
+                app:argType="com.example.pk_device_android.data.models.DevicesResponse"/>
+        </action>
+
     </fragment>
 
     <fragment
@@ -37,5 +45,15 @@
             android:name="detailDeviceData"
             app:argType="com.example.pk_device_android.data.models.DevicesResponse" />
     </fragment>
+
+    <dialog
+        android:id="@+id/delete_device_dialog"
+        android:name="com.example.pk_device_android.presentation.remove_device.RemoveDeviceDialogFragment"
+        android:label="@string/delete_device_dialog_label"
+        tools:layout="@layout/remove_device_dialog">
+        <argument
+            android:name="deleteDetailDevice"
+            app:argType="com.example.pk_device_android.data.models.DevicesResponse"/>
+    </dialog>
 
 </navigation>
