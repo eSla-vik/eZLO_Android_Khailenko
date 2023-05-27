@@ -32,7 +32,7 @@ class DevicesAdapter(
             with(deviceItemBinding) {
                 Glide.with(itemView).load(item.imageSource).into(acivDeviceItemImage)
                 acivTvDeviceItemTitle.text = item.templateTitle
-                acivTvDeviceItemPk.text = item.pkDevice.toString()
+                acivTvDeviceItemPk.text = item.pkDevice
                 acibDeviceItemDetailBtn.setOnClickListener { detailDeviceClickCallback(item, false) }
                 acibDeviceItemEditBtn.setOnClickListener { detailDeviceClickCallback(item, true) }
                 clMainContainerDeviceItem.setOnLongClickListener { detailDeviceLongClickCallback(item)

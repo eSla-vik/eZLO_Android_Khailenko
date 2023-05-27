@@ -21,7 +21,7 @@ class DevicesListViewModel(
         getDeviceList()
     }
 
-    fun getDeviceList() {
+    private fun getDeviceList() {
         viewModelScope.launch {
             val listOfDevice = deviceInteractor.getDeviceList()
             val mapperListOfDevice = deviceMapper.map(listOfDevice)
