@@ -5,11 +5,6 @@
     <string name="user_name">John Wayne</string>
     <!--  -->
 
-    <!-- Device data template-->
-    <string name="device_item_name">Home Number 1</string>
-    <string name="device_item_sn">45013855</string>
-    <!--  -->
-
     <!-- Navigation component-->
     <string name="devices_list_fragment_label">DevicesListFragment</string>
     <string name="detail_device_fragment_label">DetailDeviceFragment</string>
@@ -24,11 +19,14 @@
 
     <!-- Device data template -->
     <string name="device_detail_template">%1$s: %2$s</string>
-    <string name="device_home_number_template">Home Number </string>
-    <string name="device_sn_template">SN </string>
-    <string name="device_mac_address_template">MAC Address: </string>
-    <string name="device_firmwave_template">Firmware: </string>
-    <string name="device_model_template">Model: </string>
+    <string name="device_home_number_template">Home Number %s</string>
+    <string name="device_sn_template">SN %s</string>
+    <string name="device_mac_address_template">MAC Address: %s</string>
+    <string name="device_firmwave_template">Firmware: %s</string>
+    <string name="device_model_template">Model: %s</string>
+
+    <string name="device_item_name">Home Number 1</string>
+    <string name="device_item_sn">45013855</string>
     <!--  -->
 
 </resources>

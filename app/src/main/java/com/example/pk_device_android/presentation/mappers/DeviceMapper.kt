@@ -15,24 +15,20 @@ class DeviceMapperImpl(
         val mapperDeviceList = deviceItemList.map {
             Device(
                 templateTitle = stringResourceProvider.getString(
-                    R.string.device_detail_template,
-                    stringResourceProvider.getString(R.string.device_home_number_template),
+                    R.string.device_home_number_template,
                     (deviceItemList.indexOf(it) + 1).toString()
                 ),
                 pkDevice = stringResourceProvider.getString(
-                    R.string.device_detail_template,
-                    stringResourceProvider.getString(R.string.device_sn_template),
+                    R.string.device_sn_template,
                     (it.pkDevice).toString()
                 ),
                 macAddress = stringResourceProvider.getString(
-                    R.string.device_detail_template,
-                    stringResourceProvider.getString(R.string.device_mac_address_template),
+                    R.string.device_mac_address_template,
                     (it.macAddress)
                 ),
                 imageSource = checkDevicePlatform(it.platform),
                 firmware = stringResourceProvider.getString(
-                    R.string.device_detail_template,
-                    stringResourceProvider.getString(R.string.device_firmwave_template),
+                    R.string.device_firmwave_template,
                     (it.firmware)
                 ),
                 platform = it.platform
