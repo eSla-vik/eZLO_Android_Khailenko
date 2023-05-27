@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pk_device_android.R
@@ -22,7 +23,6 @@ class DevicesListFragment : Fragment() {
     private var _binding: DevicesListFragmentBinding? = null
     private val binding get() = _binding!!
     private val deviceListViewModel by viewModel<DevicesListViewModel>()
-    private val devicesAdapter: DevicesAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,14 +45,35 @@ class DevicesListFragment : Fragment() {
     }
 
     private fun initAdapter(devicesList: DevicesListResponse) {
-        binding.rvDevicesList.adapter = DevicesAdapter(devicesList.devices)
+        binding.rvDevicesList.adapter = DevicesAdapter(
+            { deviceDetail, isEditMode ->
+                navigateToDetailDeviceScreen(deviceDetail, isEditMode)
+            },
+            { deviceDetail ->
+                showDialogFragment(deviceDetail)
+            },
+            devicesList.devices
+        )
         addDividerToAdapter()
     }
 
     private fun addDividerToAdapter() {
         val decorator = DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL)
-        ContextCompat.getDrawable(requireContext(), R.drawable.item_divider)?.let { decorator.setDrawable(it) }
+        ContextCompat.getDrawable(requireContext(), R.drawable.item_divider)
+            ?.let { decorator.setDrawable(it) }
         binding.rvDevicesList.addItemDecoration(decorator)
+    }
+
+    private fun navigateToDetailDeviceScreen(detailDevice: DevicesResponse, isEditMode: Boolean) {
+        val action = DevicesListFragmentDirections.devicesListFragmentToDetailDeviceFragment(
+            detailDevice,
+            isEditMode
+        )
+        findNavController().navigate(action)
+    }
+
+    private fun showDialogFragment(detailDevice: DevicesResponse) {
+        Log.d("Khailenko", "detailDevice -> ${detailDevice}")
     }
 
 }

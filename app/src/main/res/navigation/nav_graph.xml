@@ -2,13 +2,40 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/devices_list_fragment"
-    android:id="@+id/nav_graph">
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/devices_list_fragment">
 
     <fragment
         android:id="@+id/devices_list_fragment"
         android:name="com.example.pk_device_android.presentation.device_list.DevicesListFragment"
         android:label="@string/devices_list_fragment_label"
-        tools:layout="@layout/devices_list_fragment"/>
+        tools:layout="@layout/devices_list_fragment">
+        <action
+            android:id="@+id/devices_list_fragment_to_detail_device_fragment"
+            app:destination="@+id/detail_device_fragment">
+            <argument
+                android:name="isEditMode"
+                android:defaultValue="false"
+                app:argType="boolean" />
+            <argument
+                android:name="detailDeviceData"
+                app:argType="com.example.pk_device_android.data.models.DevicesResponse" />
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/detail_device_fragment"
+        android:name="com.example.pk_device_android.presentation.device_detail.DetailDeviceFragment"
+        android:label="@string/detail_device_fragment_label"
+        tools:layout="@layout/detail_device_fragment">
+        <argument
+            android:name="isEditMode"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="detailDeviceData"
+            app:argType="com.example.pk_device_android.data.models.DevicesResponse" />
+    </fragment>
 
 </navigation>

@@ -12,5 +12,13 @@
 
     <!-- Navigation component-->
     <string name="devices_list_fragment_label">DevicesListFragment</string>
+    <string name="detail_device_fragment_label">DetailDeviceFragment</string>
     <!--  -->
+
+    <!-- Remove device dialog-->
+    <string name="remove_device">Remove device</string>
+    <string name="remove_device_ok">OK</string>
+    <string name="remove_device_cancel">Cancel</string>
+    <!--  -->
+
 </resources>

@@ -7,6 +7,8 @@ import com.example.pk_device_android.data.models.DevicesResponse
 import com.example.pk_device_android.databinding.DeviceItemBinding
 
 class DevicesAdapter(
+    private val detailDeviceClickCallback: ((DevicesResponse, Boolean) -> Unit),
+    private val detailDeviceLongClickCallback: ((DevicesResponse) -> Unit),
     private val devicesList: List<DevicesResponse>
 ) : RecyclerView.Adapter<DevicesAdapter.DevicesViewHolder>() {
 
@@ -26,7 +28,20 @@ class DevicesAdapter(
         RecyclerView.ViewHolder(deviceItemBinding.root) {
 
         fun bind(item: DevicesResponse) {
-            deviceItemBinding.acivTvDeviceItemTitle.text = item.pkDevice.toString()
+            with(deviceItemBinding) {
+                acivTvDeviceItemTitle.text = item.pkDevice.toString()
+                acibDeviceItemDetailBtn.setOnClickListener {
+                    detailDeviceClickCallback(
+                        item,
+                        false
+                    )
+                }
+                acibDeviceItemEditBtn.setOnClickListener { detailDeviceClickCallback(item, true) }
+                clMainContainerDeviceItem.setOnLongClickListener {
+                    detailDeviceLongClickCallback(item)
+                    true
+                }
+            }
         }
     }
 
