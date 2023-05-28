@@ -33,4 +33,10 @@
     <string name="something_went_wrong">Something went wrong! Please, try again.</string>
     <!--  -->
 
+    <!-- Models-->
+    <string name="vera_plus">Vera Plus</string>
+    <string name="vera_secure">Vera Secure</string>
+    <string name="vera_edge">Vera Edge</string>
+    <!--  -->
+
 </resources>

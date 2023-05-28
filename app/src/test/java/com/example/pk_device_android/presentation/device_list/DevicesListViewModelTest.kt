@@ -47,7 +47,8 @@ class DevicesListViewModelTest {
         macAddress = "MAC Address: 01:02:03",
         imageSource = R.drawable.vera_edge_big,
         firmware = "Firmware: firmware",
-        platform = "platform"
+        platform = "platform",
+        model = "model"
     )
 
     @Test

@@ -10,5 +10,6 @@ data class Device(
     val macAddress: String,
     val imageSource: Int,
     val firmware: String,
-    val platform: String
+    val platform: String,
+    val model: String
 ) : Parcelable

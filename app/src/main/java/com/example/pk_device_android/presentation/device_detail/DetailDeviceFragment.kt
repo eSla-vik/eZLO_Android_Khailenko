@@ -69,7 +69,7 @@ class DetailDeviceFragment : Fragment() {
             detailScreenDeviceSn.text = device.pkDevice
             detailScreenDeviceMacAddress.text = device.macAddress
             detailScreenDeviceFirmware.text = device.firmware
-            detailScreenDeviceModel.text = device.firmware
+            detailScreenDeviceModel.text = device.model
             Glide.with(requireActivity()).load(device.imageSource).into(detailScreenDeviceImage)
         }
     }
