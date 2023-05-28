@@ -45,18 +45,19 @@ class DetailDeviceFragment : Fragment() {
 
     private fun initScreenMode(isEditMode: Boolean) {
         with(binding) {
-            detailScreenDeviceTitle.isEnabled = isEditMode
+            detailScreenDeviceTitle.isVisible = !isEditMode
+            detailScreenDeviceEditTitle.isVisible = isEditMode
             detailScreenSaveTitleButton.isVisible = isEditMode
             if (isEditMode) {
-                detailScreenDeviceTitle.requestFocus()
+                detailScreenDeviceEditTitle.requestFocus()
                 val inputMethodManager =
                     requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
                 inputMethodManager.showSoftInput(
-                    detailScreenDeviceTitle,
+                    detailScreenDeviceEditTitle,
                     InputMethodManager.SHOW_IMPLICIT
                 )
                 binding.detailScreenSaveTitleButton.setOnClickListener {
-                    detailDeviceViewModel.updateDeviceTitle(args.detailDeviceData, binding.detailScreenDeviceTitle.text.toString())
+                    detailDeviceViewModel.updateDeviceTitle(args.detailDeviceData, binding.detailScreenDeviceEditTitle.text.toString())
                 }
             }
         }
@@ -64,6 +65,7 @@ class DetailDeviceFragment : Fragment() {
     private fun initDeviceData(device: Device) {
         with(binding) {
             detailScreenDeviceTitle.setText(device.templateTitle)
+            detailScreenDeviceEditTitle.setText(device.templateTitle)
             detailScreenDeviceSn.text = device.pkDevice
             detailScreenDeviceMacAddress.text = device.macAddress
             detailScreenDeviceFirmware.text = device.firmware
