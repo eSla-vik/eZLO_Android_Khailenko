@@ -1,12 +1,11 @@
 package com.example.pk_device_android.presentation.device_list
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.pk_device_android.presentation.mappers.Device
 import com.example.pk_device_android.domain.interactors.DeviceInteractor
+import com.example.pk_device_android.presentation.mappers.Device
 import com.example.pk_device_android.presentation.mappers.DeviceMapper
 import kotlinx.coroutines.launch
 

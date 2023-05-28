@@ -2,7 +2,6 @@ package com.example.pk_device_android.presentation.device_detail
 
 import android.app.Activity
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,9 +14,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
-import com.example.pk_device_android.presentation.mappers.Device
 import com.example.pk_device_android.databinding.DetailDeviceFragmentBinding
 import com.example.pk_device_android.presentation.device_list.DevicesListFragment
+import com.example.pk_device_android.presentation.mappers.Device
 
 
 class DetailDeviceFragment : Fragment() {

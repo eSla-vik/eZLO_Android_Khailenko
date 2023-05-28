@@ -2,7 +2,6 @@ package com.example.pk_device_android.presentation.remove_device
 
 import android.app.Dialog
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,6 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.navArgs
-import com.example.pk_device_android.presentation.mappers.Device
 import com.example.pk_device_android.databinding.RemoveDeviceDialogBinding
 import com.example.pk_device_android.presentation.device_list.DevicesListFragment.Companion.BUNDLE_KEY_REMOVE_DEVICE
 import com.example.pk_device_android.presentation.device_list.DevicesListFragment.Companion.REQUEST_KEY_REMOVE_DEVICE
