@@ -28,12 +28,12 @@ class DevicesAdapter(
 
         fun bind(item: Device) {
             with(deviceItemBinding) {
-                Glide.with(itemView).load(item.imageSource).into(acivDeviceItemImage)
-                acivTvDeviceItemTitle.text = item.templateTitle
-                acivTvDeviceItemPk.text = item.pkDevice
-                acibDeviceItemDetailBtn.setOnClickListener { detailDeviceClickCallback(item, false) }
-                acibDeviceItemEditBtn.setOnClickListener { detailDeviceClickCallback(item, true) }
-                clMainContainerDeviceItem.setOnLongClickListener { detailDeviceLongClickCallback(item)
+                Glide.with(itemView).load(item.imageSource).into(itemDeviceImage)
+                itemDeviceTitle.text = item.templateTitle
+                itemDevicePk.text = item.pkDevice
+                itemDeviceDetailButton.setOnClickListener { detailDeviceClickCallback(item, false) }
+                itemDeviceEditButton.setOnClickListener { detailDeviceClickCallback(item, true) }
+                itemDeviceContainer.setOnLongClickListener { detailDeviceLongClickCallback(item)
                     true
                 }
             }

@@ -1,61 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nsv_container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:scrollbars="none">
+    android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_main_container"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/device_list_screen_user_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cv_user_data"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/gray"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/ll_container"
-                android:layout_width="wrap_content"
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:src="@drawable/avatar" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:orientation="vertical">
+                android:text="@string/user_name"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_dimen_35sp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/aciv_user_image"
-                    android:layout_width="300dp"
-                    android:layout_height="300dp"
-                    android:src="@drawable/avatar" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/actv_user_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_dimen_35sp"
-                    android:textAlignment="center"
-                    android:text="@string/user_name" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/device_list_screen_user_container">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_devices_list"
+            android:id="@+id/device_list_screen_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintTop_toBottomOf="@id/cv_user_data"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:listitem="@layout/device_item"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/device_list_screen_user_container"
+            tools:listitem="@layout/device_item" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.core.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

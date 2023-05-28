@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cv_user_data_detail_screen"
+        android:id="@+id/detail_screen_user_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/gray"
@@ -15,20 +15,17 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:id="@+id/ll_container_detail_screen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/aciv_user_image_detail_screen"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
                 android:src="@drawable/avatar" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/actv_user_name_detail_screen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
@@ -39,63 +36,63 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/aciv_detail_screen_device_image"
+        android:id="@+id/detail_screen_device_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cv_user_data_detail_screen"
+        app:layout_constraintTop_toBottomOf="@id/detail_screen_user_container"
         tools:src="@drawable/device_test_image"/>
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/acet_detail_screen_device_name"
+        android:id="@+id/detail_screen_device_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:inputType="text"
         android:imeOptions="actionDone"
-        app:layout_constraintStart_toEndOf="@id/aciv_detail_screen_device_image"
-        app:layout_constraintTop_toBottomOf="@id/cv_user_data_detail_screen"
+        app:layout_constraintStart_toEndOf="@id/detail_screen_device_image"
+        app:layout_constraintTop_toBottomOf="@id/detail_screen_user_container"
         tools:text="Home number 1"/>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/aciv_detail_screen_device_sn"
+        android:id="@+id/detail_screen_device_sn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/aciv_detail_screen_device_image"
+        app:layout_constraintTop_toBottomOf="@id/detail_screen_device_image"
         tools:text="SN: 12321312312"/>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/aciv_detail_screen_device_mac_address"
+        android:id="@+id/detail_screen_device_mac_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/aciv_detail_screen_device_sn"
+        app:layout_constraintTop_toBottomOf="@id/detail_screen_device_sn"
         tools:text="Mac Address: 12321312312"/>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/aciv_detail_screen_device_firmware"
+        android:id="@+id/detail_screen_device_firmware"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/aciv_detail_screen_device_mac_address"
+        app:layout_constraintTop_toBottomOf="@id/detail_screen_device_mac_address"
         tools:text="Firmware: 12321312312"/>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/aciv_detail_screen_device_model"
+        android:id="@+id/detail_screen_device_model"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/aciv_detail_screen_device_firmware"
+        app:layout_constraintTop_toBottomOf="@id/detail_screen_device_firmware"
         tools:text="Model: 12321312312"/>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/acb_save_new_title"
+        android:id="@+id/detail_screen_save_title_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/gray"
@@ -104,7 +101,7 @@
         android:text="Save changes"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/aciv_detail_screen_device_model"/>
+        app:layout_constraintTop_toBottomOf="@id/detail_screen_device_model"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -45,30 +45,30 @@ class DetailDeviceFragment : Fragment() {
 
     private fun initScreenMode(isEditMode: Boolean) {
         with(binding) {
-            acetDetailScreenDeviceName.isEnabled = isEditMode
-            acbSaveNewTitle.isVisible = isEditMode
+            detailScreenDeviceTitle.isEnabled = isEditMode
+            detailScreenSaveTitleButton.isVisible = isEditMode
             if (isEditMode) {
-                acetDetailScreenDeviceName.requestFocus()
+                detailScreenDeviceTitle.requestFocus()
                 val inputMethodManager =
                     requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
                 inputMethodManager.showSoftInput(
-                    acetDetailScreenDeviceName,
+                    detailScreenDeviceTitle,
                     InputMethodManager.SHOW_IMPLICIT
                 )
-                binding.acbSaveNewTitle.setOnClickListener {
-                    detailDeviceViewModel.updateDeviceTitle(args.detailDeviceData, binding.acetDetailScreenDeviceName.text.toString())
+                binding.detailScreenSaveTitleButton.setOnClickListener {
+                    detailDeviceViewModel.updateDeviceTitle(args.detailDeviceData, binding.detailScreenDeviceTitle.text.toString())
                 }
             }
         }
     }
     private fun initDeviceData(device: Device) {
         with(binding) {
-            acetDetailScreenDeviceName.setText(device.templateTitle)
-            acivDetailScreenDeviceSn.text = device.pkDevice
-            acivDetailScreenDeviceMacAddress.text = device.macAddress
-            acivDetailScreenDeviceFirmware.text = device.firmware
-            acivDetailScreenDeviceModel.text = device.firmware
-            Glide.with(requireActivity()).load(device.imageSource).into(acivDetailScreenDeviceImage)
+            detailScreenDeviceTitle.setText(device.templateTitle)
+            detailScreenDeviceSn.text = device.pkDevice
+            detailScreenDeviceMacAddress.text = device.macAddress
+            detailScreenDeviceFirmware.text = device.firmware
+            detailScreenDeviceModel.text = device.firmware
+            Glide.with(requireActivity()).load(device.imageSource).into(detailScreenDeviceImage)
         }
     }
 

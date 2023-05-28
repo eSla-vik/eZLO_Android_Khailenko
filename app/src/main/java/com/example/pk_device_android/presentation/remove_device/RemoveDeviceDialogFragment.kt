@@ -41,14 +41,14 @@ class RemoveDeviceDialogFragment : DialogFragment() {
     override fun onStart() {
         super.onStart()
         binding.apply {
-            tvRemoveDevice.setOnClickListener {
+            removeDialogRemoveButton.setOnClickListener {
                 setFragmentResult(
                     REQUEST_KEY_REMOVE_DEVICE,
                     bundleOf(BUNDLE_KEY_REMOVE_DEVICE to args.device)
                 )
                 dismissAllowingStateLoss()
             }
-            tvCancelRemoveDeviceDialog.setOnClickListener { dismissAllowingStateLoss() }
+            removeDialogCancelButton.setOnClickListener { dismissAllowingStateLoss() }
         }
     }
 

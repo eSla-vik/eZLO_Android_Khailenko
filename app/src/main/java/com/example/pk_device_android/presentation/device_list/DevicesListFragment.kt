@@ -51,8 +51,8 @@ class DevicesListFragment : Fragment() {
         val decorator = DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL)
         ContextCompat.getDrawable(requireContext(), R.drawable.item_divider)
             ?.let { decorator.setDrawable(it) }
-        binding.rvDevicesList.addItemDecoration(decorator)
-        binding.rvDevicesList.adapter = adapter
+        binding.deviceListScreenRecyclerView.addItemDecoration(decorator)
+        binding.deviceListScreenRecyclerView.adapter = adapter
     }
 
     private fun navigateToDetailDeviceScreen(detailDevice: Device, isEditMode: Boolean) {
