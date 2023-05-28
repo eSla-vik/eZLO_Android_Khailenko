@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
@@ -45,6 +47,7 @@ class DevicesListFragment : Fragment() {
         initObservers()
         initResultListener()
         initAdapter()
+        initClickListeners()
     }
 
     private fun initAdapter() {
@@ -95,6 +98,21 @@ class DevicesListFragment : Fragment() {
     private fun initObservers() {
         deviceListViewModel.deviceLiveData.observe(viewLifecycleOwner) {
             adapter.submitList(it)
+        }
+
+        deviceListViewModel.exceptionHandlerLiveData.observe(viewLifecycleOwner) { isException ->
+            binding.tryAgainButton.isVisible = isException
+            if (isException) Toast.makeText(
+                requireContext(),
+                R.string.something_went_wrong,
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+    private fun initClickListeners() {
+        binding.tryAgainButton.setOnClickListener {
+            deviceListViewModel.getDeviceList()
         }
     }
 

@@ -24,9 +24,13 @@
     <string name="device_mac_address_template">MAC Address: %s</string>
     <string name="device_firmwave_template">Firmware: %s</string>
     <string name="device_model_template">Model: %s</string>
-
     <string name="device_item_name">Home Number 1</string>
     <string name="device_item_sn">45013855</string>
+    <!--  -->
+
+    <!-- Error handler-->
+    <string name="exception_try_again">Try again</string>
+    <string name="something_went_wrong">Something went wrong! Please, try again.</string>
     <!--  -->
 
 </resources>

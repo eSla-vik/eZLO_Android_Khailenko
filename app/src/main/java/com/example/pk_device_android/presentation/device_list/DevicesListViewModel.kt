@@ -18,15 +18,23 @@ class DevicesListViewModel(
     private var _deviceLiveData = MutableLiveData<List<Device>>()
     val deviceLiveData: LiveData<List<Device>> = _deviceLiveData
 
+    private var _exceptionHandlerLiveData = MutableLiveData<Boolean>()
+    val exceptionHandlerLiveData: LiveData<Boolean> = _exceptionHandlerLiveData
+
     init {
         getDeviceList()
     }
 
-    private fun getDeviceList() {
+    fun getDeviceList() {
         viewModelScope.launch {
-            val listOfDevice = deviceInteractor.getDeviceList()
-            val mapperListOfDevice = deviceMapper.map(listOfDevice)
-            _deviceLiveData.value = mapperListOfDevice
+            try {
+                val listOfDevice = deviceInteractor.getDeviceList()
+                val mapperListOfDevice = deviceMapper.map(listOfDevice)
+                _deviceLiveData.value = mapperListOfDevice
+                _exceptionHandlerLiveData.value = false
+            } catch (e: Exception) {
+                _exceptionHandlerLiveData.value = true
+            }
         }
     }
 
