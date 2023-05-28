@@ -26,7 +26,7 @@ class DeviceMapperTest {
                 serverAccount = "account",
                 internalIP = "100.100.100.100",
                 lastAliveReported = "alive",
-                platform = "platform"
+                platform = DevicePlatform.SERCOMM_G450.type
             )
         )
         whenever(
@@ -53,6 +53,15 @@ class DeviceMapperTest {
                 "firmware"
             )
         ).thenReturn("Firmware: firmware")
+        whenever(
+            stringResourceProvider.getString(R.string.vera_plus)
+        ).thenReturn("Vera Plus")
+        whenever(
+            stringResourceProvider.getString(
+                R.string.device_model_template,
+                "Vera Plus"
+            )
+        ).thenReturn("Model: Vera Plus")
         val mapper = getMapper()
 
         val mapList = mapper.map(listDeviceItem)
@@ -62,8 +71,9 @@ class DeviceMapperTest {
         assertEquals(device.pkDevice, "SN 100")
         assertEquals(device.macAddress, "MAC Address: 01:02:03")
         assertEquals(device.firmware, "Firmware: firmware")
-        assertEquals(device.imageSource, R.drawable.vera_edge_big)
-        assertEquals(device.platform, "platform")
+        assertEquals(device.imageSource, R.drawable.vera_plus_big)
+        assertEquals(device.platform, "Sercomm G450")
+        assertEquals(device.model, "Model: Vera Plus")
     }
 
     private fun getMapper(): DeviceMapper {
